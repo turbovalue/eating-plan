@@ -1,0 +1,417 @@
+<title>Bite by Bite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --coral:#FF7A4D;
+  --coral-deep:#E1552A;
+  --leaf:#1F8A6D;
+  --leaf-deep:#146B54;
+  --plum:#B03B6B;
+  --sun:#FFC24B;
+  --cream:#FFF9F2;
+  --card:#FFFFFF;
+  --ink:#221B15;
+  --ink-2:#4A4038;
+  --muted:#7A6E63;
+  --line:#F0E4D6;
+  --tint-leaf:#EAF6F1;
+  --tint-coral:#FFF0E8;
+  --tint-sun:#FFF6E0;
+  --shadow:0 1px 2px rgba(34,27,21,.04),0 8px 24px -12px rgba(34,27,21,.18);
+  --r:18px;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --cream:#171310; --card:#211B17; --ink:#F5EEE6; --ink-2:#D8CCC0; --muted:#A29486;
+    --line:#332A23; --tint-leaf:#16302A; --tint-coral:#31201A; --tint-sun:#2E2617;
+    --coral:#FF9068; --leaf:#5FC6A5; --leaf-deep:#8FD9BE; --plum:#E58AAE; --sun:#F0C15F;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px -14px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+    --cream:#171310; --card:#211B17; --ink:#F5EEE6; --ink-2:#D8CCC0; --muted:#A29486;
+    --line:#332A23; --tint-leaf:#16302A; --tint-coral:#31201A; --tint-sun:#2E2617;
+    --coral:#FF9068; --leaf:#5FC6A5; --leaf-deep:#8FD9BE; --plum:#E58AAE; --sun:#F0C15F;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px -14px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--cream);color:var(--ink);
+  font-family:var(--sans);font-size:16.5px;line-height:1.6;
+  padding-bottom:calc(64px + env(safe-area-inset-bottom));
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+@media (min-width:720px){.wrap{padding:0 24px}}
+
+/* ---------- hero ---------- */
+.hero{
+  background:
+    radial-gradient(120% 90% at 15% 0%, rgba(255,194,75,.35) 0%, transparent 55%),
+    radial-gradient(110% 80% at 95% 10%, rgba(31,138,109,.28) 0%, transparent 60%),
+    linear-gradient(160deg,var(--coral) 0%, var(--coral-deep) 100%);
+  color:#fff;padding:calc(30px + env(safe-area-inset-top)) 0 34px;
+  border-radius:0 0 28px 28px;
+}
+.mark{display:inline-flex;align-items:center;gap:8px;font-family:var(--serif);
+  font-weight:700;font-size:15px;letter-spacing:.02em;
+  background:rgba(255,255,255,.18);padding:6px 13px 6px 10px;border-radius:999px;
+  backdrop-filter:blur(6px)}
+.mark .dots{letter-spacing:2px;font-size:12px;opacity:.9}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(30px,8.5vw,46px);
+  line-height:1.05;letter-spacing:-.02em;margin:16px 0 10px;text-wrap:balance}
+.hero p{margin:0;font-size:16px;line-height:1.5;color:rgba(255,255,255,.94);max-width:34em}
+.meta{margin-top:16px;display:flex;flex-wrap:wrap;gap:7px}
+.pill{font-size:12.5px;font-weight:600;letter-spacing:.02em;
+  background:rgba(255,255,255,.2);padding:5px 11px;border-radius:999px}
+
+/* ---------- sticky nav ---------- */
+nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--cream) 88%, transparent);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line);margin-top:-1px}
+.navscroll{display:flex;gap:7px;overflow-x:auto;padding:10px 16px;scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
+.navscroll::-webkit-scrollbar{display:none}
+.navscroll a{flex:0 0 auto;scroll-snap-align:start;text-decoration:none;
+  font-size:13.5px;font-weight:600;color:var(--ink-2);background:var(--card);
+  border:1px solid var(--line);padding:8px 14px;border-radius:999px;
+  min-height:38px;display:flex;align-items:center;transition:.18s}
+.navscroll a.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+
+/* ---------- sections ---------- */
+main{padding-top:22px}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  padding:22px 18px;margin-bottom:14px;box-shadow:var(--shadow);scroll-margin-top:70px}
+@media (min-width:720px){section{padding:28px 30px}}
+.eyebrow{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--coral-deep);background:var(--tint-coral);
+  padding:4px 10px;border-radius:6px;margin-bottom:10px}
+.eyebrow.g{color:var(--leaf-deep);background:var(--tint-leaf)}
+.eyebrow.p{color:var(--plum);background:var(--tint-sun)}
+h2{font-family:var(--serif);font-weight:700;font-size:clamp(22px,5.6vw,27px);
+  line-height:1.15;letter-spacing:-.02em;margin:0 0 6px;text-wrap:balance}
+.why{color:var(--muted);font-size:14.5px;line-height:1.5;margin:0 0 16px}
+.why b{color:var(--ink-2)}
+ul{margin:0;padding-left:20px}
+li{margin:9px 0;color:var(--ink-2)}
+li b,li strong{color:var(--ink);font-weight:650}
+p{color:var(--ink-2)}
+
+/* callout */
+.rule{background:var(--tint-leaf);border-left:4px solid var(--leaf);
+  padding:14px 16px;border-radius:0 12px 12px 0;margin:16px 0 0;font-size:15.5px;color:var(--ink)}
+.rule.warm{background:var(--tint-coral);border-color:var(--coral)}
+.rule.flag{background:var(--tint-coral);border-color:var(--coral-deep)}
+
+/* the big split rule */
+.split{display:grid;gap:10px;margin:4px 0 16px}
+@media (min-width:560px){.split{grid-template-columns:1fr 1fr}}
+.half{border-radius:14px;padding:16px 18px}
+.half.us{background:var(--tint-coral)}
+.half.her{background:var(--tint-leaf)}
+.half span{display:block;font-size:11.5px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;margin-bottom:6px}
+.half.us span{color:var(--coral-deep)} .half.her span{color:var(--leaf-deep)}
+.half strong{font-family:var(--serif);font-weight:700;font-size:19px;line-height:1.25;
+  display:block;color:var(--ink)}
+
+/* checklist */
+.chk{list-style:none;padding:0;margin:0}
+.chk li{display:flex;gap:12px;align-items:flex-start;padding:13px 0;margin:0;
+  border-bottom:1px solid var(--line)}
+.chk li:last-child{border-bottom:0;padding-bottom:0}
+.chk .num{flex:0 0 26px;height:26px;border-radius:8px;background:var(--tint-coral);
+  color:var(--coral-deep);font-size:13px;font-weight:700;display:flex;
+  align-items:center;justify-content:center;margin-top:1px}
+
+/* schedule cards (no table on mobile) */
+.rows{display:grid;gap:10px}
+.row{background:var(--tint-sun);border-radius:14px;padding:14px 16px}
+.row h3{margin:0 0 2px;font-size:16px;font-weight:700;color:var(--ink)}
+.row .freq{font-size:13px;font-weight:700;color:var(--coral-deep);
+  text-transform:uppercase;letter-spacing:.05em;margin:0 0 6px}
+.row p{margin:0;font-size:14.5px;line-height:1.5}
+
+/* do / don't */
+.two{display:grid;gap:12px}
+@media (min-width:600px){.two{grid-template-columns:1fr 1fr}}
+.box{border-radius:14px;padding:16px 18px}
+.box.do{background:var(--tint-leaf)} .box.dont{background:var(--tint-coral)}
+.box h3{margin:0 0 10px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.box.do h3{color:var(--leaf-deep)} .box.dont h3{color:var(--coral-deep)}
+.box ul{padding-left:18px} .box li{font-size:14.8px;margin:8px 0;line-height:1.5}
+
+/* chains / accordion */
+details{border:1px solid var(--line);border-radius:14px;margin-bottom:8px;overflow:hidden;
+  background:var(--card);transition:.2s}
+details[open]{background:var(--tint-leaf);border-color:transparent}
+summary{cursor:pointer;list-style:none;padding:15px 16px;font-weight:650;font-size:16px;
+  display:flex;align-items:center;gap:11px;min-height:52px;color:var(--ink)}
+summary::-webkit-details-marker{display:none}
+.tw{flex:0 0 26px;height:26px;border-radius:50%;background:var(--tint-coral);
+  color:var(--coral-deep);font-size:15px;display:flex;align-items:center;justify-content:center}
+summary .car{margin-left:auto;color:var(--muted);font-size:13px;transition:transform .2s}
+details[open] summary .car{transform:rotate(90deg)}
+.body{padding:0 16px 16px}
+.chain{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 10px}
+.chain i{font-style:normal;background:var(--card);border:1px solid var(--line);
+  border-radius:999px;padding:5px 11px;font-size:13.5px;font-weight:600;color:var(--ink)}
+.chain u{text-decoration:none;color:var(--leaf);font-weight:700;font-size:13px}
+.body p{margin:0;font-size:14.5px;line-height:1.55}
+.body p + .chain{margin-top:12px}
+
+/* ladder */
+.ladder{list-style:none;padding:0;margin:0;counter-reset:s}
+.ladder li{display:flex;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line);margin:0}
+.ladder li:last-child{border-bottom:0}
+.ladder .dot{flex:0 0 10px;height:10px;border-radius:50%;background:var(--leaf);opacity:.35}
+.ladder li:nth-child(1) .dot{opacity:.3}
+.ladder li:nth-child(2) .dot{opacity:.45}
+.ladder li:nth-child(3) .dot{opacity:.6}
+.ladder li:nth-child(4) .dot{opacity:.8}
+.ladder li:nth-child(5) .dot{opacity:1}
+
+/* red flags */
+section.flags{border-color:var(--coral)}
+.flags li::marker{color:var(--coral-deep)}
+
+footer{text-align:center;color:var(--muted);font-size:12.5px;line-height:1.7;
+  padding:26px 8px 10px}
+footer .fmark{font-family:var(--serif);font-weight:700;font-size:15px;color:var(--ink-2);display:block;margin-bottom:6px}
+
+.top{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));
+  width:46px;height:46px;border-radius:50%;background:var(--ink);color:var(--cream);
+  border:0;font-size:17px;box-shadow:var(--shadow);opacity:0;pointer-events:none;
+  transition:.25s;z-index:60;cursor:pointer}
+.top.show{opacity:1;pointer-events:auto}
+@media print{nav,.top{display:none}section{break-inside:avoid;box-shadow:none}}
+</style>
+
+
+<div class="hero">
+  <div class="wrap">
+    <div class="mark"><span class="dots">&bull;&bull;&bull;</span> Bite by Bite</div>
+    <h1>Raising a kid who&rsquo;s willing to try.</h1>
+    <p>Our feeding plan &mdash; built on the Division of Responsibility. The goal isn&rsquo;t broccoli tonight. It&rsquo;s a child who stays curious about food.</p>
+    <div class="meta">
+      <span class="pill">29 months</span>
+      <span class="pill">4 min read</span>
+      <span class="pill">No guilt, no bribes</span>
+    </div>
+  </div>
+</div>
+
+<nav>
+  <div class="navscroll" id="nav">
+    <a href="#rule">The Rule</a>
+    <a href="#start">Start Here</a>
+    <a href="#week">The Week</a>
+    <a href="#dos">Do / Don&rsquo;t</a>
+    <a href="#chains">Food Chains</a>
+    <a href="#flags">Red Flags</a>
+    <a href="#progress">Progress</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="rule">
+  <span class="eyebrow">The foundation</span>
+  <h2>One rule holds up everything else</h2>
+  <p class="why">Ellyn Satter&rsquo;s <b>Division of Responsibility</b> &mdash; the most-studied feeding framework there is.</p>
+  <div class="split">
+    <div class="half us"><span>We decide</span><strong>What food is served, when, and where.</strong></div>
+    <div class="half her"><span>She decides</span><strong>Whether she eats it, and how much.</strong></div>
+  </div>
+  <ul>
+    <li>Our job ends when the food hits the table. <b>No convincing, no bargaining, no &ldquo;three more bites.&rdquo;</b></li>
+    <li>Pressure &mdash; even kind, cheerful pressure &mdash; is the best-documented way to <em>shrink</em> a toddler&rsquo;s diet. It turns new food into a test.</li>
+    <li>She has to feel genuinely free to say no. <b>That freedom is what eventually makes yes possible.</b></li>
+  </ul>
+</section>
+
+<section id="start">
+  <span class="eyebrow g">Week one</span>
+  <h2>Six things to change now</h2>
+  <p class="why">Structure does most of the work. These change the <b>environment</b>, not her.</p>
+  <ul class="chk">
+    <li><span class="num">1</span><div><b>Lock the schedule.</b> 3 meals + 2 snacks, every 2.5&ndash;3 hours. Only water in between.</div></li>
+    <li><span class="num">2</span><div><b>End the grazing.</b> A toddler who nibbles all day is never hungry enough to be curious. Milk with meals; cap around 16 oz a day.</div></li>
+    <li><span class="num">3</span><div><b>Serve family style.</b> Bowls on the table, she serves herself. Self-serving hands her the &ldquo;how much&rdquo; &mdash; which is what lets her be brave about the &ldquo;what.&rdquo;</div></li>
+    <li><span class="num">4</span><div><b>Every plate = one safe food + the family meal.</b> Cottage cheese, PB toast, or a slice of pizza is always the anchor.</div></li>
+    <li><span class="num">5</span><div><b>No short-order cooking.</b> One meal. The safe food is <em>part</em> of it &mdash; not a rescue plate made after she refuses.</div></li>
+    <li><span class="num">6</span><div><b>We eat the same food, at the same time, and say nothing about her eating.</b> Modeling beats instruction at this age.</div></li>
+  </ul>
+  <div class="rule warm"><b>The safe-food anchor is the whole trick.</b> It guarantees she won&rsquo;t go hungry, which takes the fear out of it for us &mdash; and our tension is what she reads at the table.</div>
+</section>
+
+<section id="week">
+  <span class="eyebrow p">Rhythm</span>
+  <h2>The weekly exposure plan</h2>
+  <p class="why">Acceptance usually takes <b>10&ndash;15+ neutral exposures</b>. Most families stop at three and decide she hates it. Repetition without pressure is the active ingredient.</p>
+  <div class="rows">
+    <div class="row"><p class="freq">3&ndash;4 nights in a row</p><h3>One target food at dinner</h3><p>Same food, several nights. Then rotate next week. Repeating <em>one</em> food beats variety.</p></div>
+    <div class="row"><p class="freq">Every serving</p><h3>A &ldquo;no-thank-you&rdquo; portion</h3><p>One bite&rsquo;s worth. A big pile reads as a demand; a crumb reads as optional.</p></div>
+    <div class="row"><p class="freq">Every dinner</p><h3>The learning plate</h3><p>A small side plate for touching, licking, dissecting, spitting out. <b>Not eating it still counts.</b></p></div>
+    <div class="row"><p class="freq">2&times; a week &middot; 5 min</p><h3>Kitchen time</h3><p>Washing, stirring, tearing lettuce. Handling food raises acceptance long before it&rsquo;s eaten.</p></div>
+    <div class="row"><p class="freq">1&times; a week</p><h3>Her grocery pick</h3><p>She chooses one item. We cook it. Zero obligation to eat it.</p></div>
+    <div class="row"><p class="freq">Whenever</p><h3>Messy play</h3><p>Hands in it, away from the table. Texture aversion fades through touch, not tasting.</p></div>
+  </div>
+  <div class="rule">Track <b>exposures, not bites.</b> &ldquo;Tomatoes: served 7 times&rdquo; is progress. &ldquo;She ate one&rdquo; is luck.</div>
+</section>
+
+<section id="dos">
+  <span class="eyebrow g">At the table</span>
+  <h2>Do this, not that</h2>
+  <div class="two">
+    <div class="box do">
+      <h3>Do</h3>
+      <ul>
+        <li><b>Describe, don&rsquo;t sell.</b> &ldquo;This carrot is crunchy and sweet.&rdquo;</li>
+        <li><b>Eat it yourself,</b> visibly, with enjoyment.</li>
+        <li><b>Accept &ldquo;no&rdquo; the first time,</b> without comment.</li>
+        <li><b>Let her spit it out</b> into a napkin. Escape routes make trying safe.</li>
+        <li><b>Pair new foods with favorites,</b> never in place of them.</li>
+        <li><b>Keep meals to ~20 minutes</b> and end them calmly.</li>
+        <li><b>Let her get a little hungry.</b> Hunger is an ally.</li>
+      </ul>
+    </div>
+    <div class="box dont">
+      <h3>Don&rsquo;t</h3>
+      <ul>
+        <li><b>Don&rsquo;t use dessert as payment.</b> It teaches that vegetables are the price of real food.</li>
+        <li><b>Don&rsquo;t praise eating.</b> &ldquo;Good girl, you ate it!&rdquo; turns food into performance.</li>
+        <li><b>Don&rsquo;t rely on hidden vegetables.</b> Fine for nutrition, useless for learning.</li>
+        <li><b>Don&rsquo;t negotiate bites.</b></li>
+        <li><b>Don&rsquo;t make a backup meal.</b></li>
+        <li><b>Don&rsquo;t comment on her eating</b> &mdash; good or bad.</li>
+        <li><b>Don&rsquo;t let one rough meal change the plan.</b> Intake averages out over a week, not a day.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="chains">
+  <span class="eyebrow">The bridges</span>
+  <h2>Food chaining</h2>
+  <p class="why">Move <b>one variable at a time</b> &mdash; flavor, <em>or</em> texture, <em>or</em> shape &mdash; so each new food is only slightly unfamiliar. Big jumps get refused. Small ones get eaten. <b>Tap to open.</b></p>
+
+  <details open>
+    <summary><span class="tw">&#127859;</span>Cottage cheese &rarr; eggs<span class="car">&#10095;</span></summary>
+    <div class="body">
+      <div class="chain"><i>cottage cheese</i><u>&rarr;</u><i>ricotta</i><u>&rarr;</u><i>ricotta on toast</i><u>&rarr;</u><i>soft egg curds</i><u>&rarr;</u><i>scrambled egg</i><u>&rarr;</u><i>egg salad</i><u>&rarr;</u><i>hard-boiled white</i></div>
+      <p>Same lumpy-soft mouthfeel, flavor shifting slowly. <b>Egg curds are the key rung</b> &mdash; they <em>feel</em> like cottage cheese.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="tw">&#127829;</span>Pizza &rarr; meat, sauce &amp; greens<span class="car">&#10095;</span></summary>
+    <div class="body">
+      <div class="chain"><i>cheese pizza</i><u>&rarr;</u><i>+ minced pepperoni</i><u>&rarr;</u><i>bigger meat pieces</i><u>&rarr;</u><i>meatball on the side</i><u>&rarr;</u><i>chicken meatball</i><u>&rarr;</u><i>cut chicken</i></div>
+      <div class="chain"><i>pizza sauce</i><u>&rarr;</u><i>marinara for dipping</i><u>&rarr;</u><i>tomato soup</i><u>&rarr;</u><i>roasted tomato</i><u>&rarr;</u><i>raw tomato</i></div>
+      <div class="chain"><i>pizza + wilted spinach</i><u>&rarr;</u><i>cheesy toast + spinach</i><u>&rarr;</u><i>saut&eacute;ed spinach</i></div>
+      <p>Pizza is the best base we have &mdash; already bread + sauce + dairy + topping. Add <b>one topping at a time, cut small</b>.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="tw">&#129372;</span>Peanut butter &rarr; new textures<span class="car">&#10095;</span></summary>
+    <div class="body">
+      <div class="chain"><i>PB on toast</i><u>&rarr;</u><i>PB on crackers</i><u>&rarr;</u><i>PB on apple</i><u>&rarr;</u><i>PB on celery</i><u>&rarr;</u><i>PB dip for carrots</i></div>
+      <div class="chain"><i>peanut butter</i><u>&rarr;</u><i>almond / sunflower butter</i><u>&rarr;</u><i>hummus</i><u>&rarr;</u><i>bean dip</i></div>
+      <p>PB is a texture ladder <em>and</em> a dip. <b>Dips work</b> because she controls how much touches the food.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="tw">&#127827;</span>Fruit &amp; the wet / crunchy problem<span class="car">&#10095;</span></summary>
+    <div class="body">
+      <div class="chain"><i>fruit pouch</i><u>&rarr;</u><i>applesauce</i><u>&rarr;</u><i>warm cooked apple</i><u>&rarr;</u><i>roasted apple slice</i><u>&rarr;</u><i>raw apple</i></div>
+      <div class="chain"><i>freeze-dried strawberry</i><u>&rarr;</u><i>fresh strawberry</i><u>&rarr;</u><i>melon</i><u>&rarr;</u><i>orange segment</i></div>
+      <p>Wet and crunchy are harder than soft and dry. <b>Freeze-dried fruit is the standard bridge</b> into juicy fruit.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="tw">&#129382;</span>Vegetables, easiest first<span class="car">&#10095;</span></summary>
+    <div class="body">
+      <div class="chain"><i>roasted sweet potato</i><u>&rarr;</u><i>roasted carrot</i><u>&rarr;</u><i>broccoli &ldquo;trees&rdquo;</i><u>&rarr;</u><i>peas</i><u>&rarr;</u><i>cucumber coins</i><u>&rarr;</u><i>pepper strips</i><u>&rarr;</u><i>leafy greens</i></div>
+      <p>Start <b>sweet and roasted</b>, not steamed and plain. Salt and olive oil are allowed &mdash; we&rsquo;re teaching her to <em>like</em> vegetables, not to eat them virtuously.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="tw">&#127831;</span>Meat &mdash; last and hardest<span class="car">&#10095;</span></summary>
+    <div class="body">
+      <div class="chain"><i>meatball</i><u>&rarr;</u><i>chicken meatball</i><u>&rarr;</u><i>nugget</i><u>&rarr;</u><i>shredded chicken in sauce</i><u>&rarr;</u><i>chicken thigh</i><u>&rarr;</u><i>ground beef</i><u>&rarr;</u><i>steak strips</i></div>
+      <p>Meat is chewy and unpredictable. <b>Ground and moist first; dry chicken breast almost last.</b> A dipping sauce helps a lot.</p>
+    </div>
+  </details>
+</section>
+
+<section id="flags" class="flags">
+  <span class="eyebrow">When to get help</span>
+  <h2>Red flags</h2>
+  <p class="why">Ordinary picky eating is a phase. These suggest a feeding <b>disorder</b> &mdash; which needs an evaluation, not more patience.</p>
+  <ul>
+    <li><b>Fewer than ~20 accepted foods,</b> or a list that keeps shrinking with foods dropping off for good.</li>
+    <li><b>Whole textures or food groups refused</b> &mdash; no proteins at all, or nothing that requires chewing.</li>
+    <li><b>Gagging, choking, coughing, or vomiting</b> at meals; pocketing food in her cheeks; chewing endlessly without swallowing.</li>
+    <li><b>Weight loss, or falling off her growth curve.</b></li>
+    <li><b>Real distress</b> &mdash; panic or gagging just from seeing a food, or from it being on the table.</li>
+    <li><b>Still on mostly pur&eacute;es,</b> or refusing all age-appropriate textures at 29 months.</li>
+    <li><b>Signs of reflux, constipation, or pain.</b> Kids who hurt when they eat stop eating &mdash; treat the pain first.</li>
+    <li>Picky eating <b>alongside speech delay or broad sensory sensitivity</b> (clothing, noise, mess).</li>
+  </ul>
+  <div class="rule flag">If any of these fit, ask the pediatrician for a referral to a <b>pediatric feeding therapist (SLP or OT)</b>. Early help is short help &mdash; this is not an overreaction.</div>
+</section>
+
+<section id="progress">
+  <span class="eyebrow g">The long game</span>
+  <h2>What progress actually looks like</h2>
+  <p class="why">Roughly this order. It can take months, and sliding backward for a week is normal.</p>
+  <ul class="ladder">
+    <li><span class="dot"></span><div>Tolerates it on the table &rarr; then on her plate</div></li>
+    <li><span class="dot"></span><div>Touches it &rarr; picks it up &rarr; smells it</div></li>
+    <li><span class="dot"></span><div>Licks it &rarr; puts it in her mouth &rarr; spits it out</div></li>
+    <li><span class="dot"></span><div>Chews and swallows one bite</div></li>
+    <li><span class="dot"></span><div>Eats it sometimes &rarr; eats it</div></li>
+  </ul>
+  <div class="rule"><b>Every step before swallowing is real progress.</b> Spitting it out is a win &mdash; she tried it.</div>
+</section>
+
+<footer>
+  <span class="fmark">Bite by Bite</span>
+  Framework: Ellyn Satter&rsquo;s Division of Responsibility in Feeding.<br>
+  Techniques: food chaining (Fraker et al.), repeated neutral exposure, family-style serving.<br>
+  General guidance for a healthy 29-month-old with no known allergies &mdash; not medical advice.
+</footer>
+</main>
+
+<button class="top" id="top" aria-label="Back to top">&#8593;</button>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('#nav a'));
+  var map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){a.classList.remove('on');});
+        var a=map[e.target.id];
+        if(a){a.classList.add('on');
+          a.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
+      }
+    });
+  },{rootMargin:'-70px 0px -65% 0px'});
+  document.querySelectorAll('section').forEach(function(s){io.observe(s);});
+
+  var top=document.getElementById('top');
+  top.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+  addEventListener('scroll',function(){top.classList.toggle('show',scrollY>700);},{passive:true});
+})();
+</script>

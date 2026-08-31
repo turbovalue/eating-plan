@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bite by Bite — Fridge Card</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23FF7A4D'/%3E%3Ccircle cx='32' cy='50' r='9' fill='%23FFF9F2'/%3E%3Ccircle cx='50' cy='50' r='9' fill='%23FFF9F2' opacity='.7'/%3E%3Ccircle cx='68' cy='50' r='9' fill='%23FFF9F2' opacity='.4'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@page{size:letter;margin:0}
+:root{
+  --coral:#FF7A4D;--coral-deep:#D14C22;--leaf:#1F8A6D;--leaf-deep:#116451;
+  --ink:#1E1813;--ink-2:#463C33;--muted:#7A6E63;--line:#EADFD2;
+  --cream:#FFFCF7;--tint-coral:#FFF0E8;--tint-leaf:#EAF6F1;--tint-sun:#FFF6E0;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --serif:"Fraunces",Georgia,serif;
+}
+*{box-sizing:border-box;margin:0}
+body{background:#EDE7DE;font-family:var(--sans);color:var(--ink);
+  padding:24px 16px;-webkit-font-smoothing:antialiased}
+.page{
+  width:8.5in;min-height:11in;background:var(--cream);margin:0 auto;
+  padding:.42in .45in .3in;display:flex;flex-direction:column;
+  box-shadow:0 10px 40px -14px rgba(0,0,0,.35)}
+.bar{display:flex;align-items:baseline;gap:12px;border-bottom:3px solid var(--ink);
+  padding-bottom:8px;margin-bottom:12px}
+.bar h1{font-family:var(--serif);font-weight:900;font-size:27px;letter-spacing:-.02em;line-height:1}
+.bar .tag{font-size:11.5px;font-weight:600;color:var(--muted);letter-spacing:.02em;margin-left:auto;text-align:right;line-height:1.35}
+
+.dor{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:13px}
+.dor div{padding:11px 14px;border-radius:12px}
+.dor .a{background:var(--tint-coral)} .dor .b{background:var(--tint-leaf)}
+.dor span{display:block;font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;margin-bottom:3px}
+.dor .a span{color:var(--coral-deep)} .dor .b span{color:var(--leaf-deep)}
+.dor strong{font-family:var(--serif);font-weight:700;font-size:16.5px;line-height:1.2;display:block}
+
+h2{font-family:var(--serif);font-weight:900;font-size:14px;letter-spacing:.01em;
+  margin-bottom:7px;display:flex;align-items:center;gap:8px}
+h2::after{content:"";flex:1;height:2px;background:var(--line)}
+.blk{margin-bottom:13px}
+
+.six{display:grid;grid-template-columns:1fr 1fr;gap:5px 18px}
+.six li{list-style:none;font-size:12.4px;line-height:1.4;display:flex;gap:7px;color:var(--ink-2)}
+.six b{color:var(--ink)}
+.six .n{flex:0 0 17px;height:17px;border-radius:5px;background:var(--coral);color:#fff;
+  font-size:10.5px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px}
+
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.col{border-radius:12px;padding:11px 14px}
+.col.d{background:var(--tint-leaf)} .col.x{background:var(--tint-coral)}
+.col h3{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;margin-bottom:6px}
+.col.d h3{color:var(--leaf-deep)} .col.x h3{color:var(--coral-deep)}
+.col li{list-style:none;font-size:12.2px;line-height:1.38;margin-bottom:4px;padding-left:13px;position:relative;color:var(--ink-2)}
+.col li:last-child{margin-bottom:0}
+.col li::before{position:absolute;left:0;font-weight:700}
+.col.d li::before{content:"+";color:var(--leaf)}
+.col.x li::before{content:"\2013";color:var(--coral-deep)}
+.col b{color:var(--ink)}
+
+.chains{display:grid;grid-template-columns:1fr 1fr;gap:5px 18px}
+.ch{font-size:11.6px;line-height:1.45;color:var(--ink-2)}
+.ch b{color:var(--ink);font-weight:650}
+.ch em{font-style:normal;color:var(--coral-deep);font-weight:700;padding:0 2px}
+
+.ladder{display:flex;flex-wrap:wrap;align-items:center;gap:6px;
+  background:var(--tint-sun);border-radius:12px;padding:10px 13px}
+.ladder i{font-style:normal;font-size:11.6px;font-weight:600;background:var(--cream);
+  border:1px solid var(--line);border-radius:999px;padding:3px 9px}
+.ladder u{text-decoration:none;color:var(--coral);font-weight:700;font-size:11px}
+
+.strip{background:var(--ink);color:var(--cream);border-radius:12px;padding:11px 14px;margin-bottom:11px}
+.strip h3{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--coral);margin-bottom:5px}
+.strip p{font-size:11.8px;line-height:1.45;color:#EFE7DD}
+.strip b{color:#fff}
+
+.mantra{margin-top:auto;border-top:3px solid var(--ink);padding-top:9px;
+  display:flex;align-items:baseline;gap:10px}
+.mantra p{font-family:var(--serif);font-weight:700;font-size:15px;line-height:1.25}
+.mantra small{margin-left:auto;font-size:9.5px;color:var(--muted);text-align:right;line-height:1.4}
+
+.print{position:fixed;right:18px;bottom:18px;background:var(--ink);color:var(--cream);
+  border:0;border-radius:999px;padding:13px 22px;font-family:var(--sans);font-size:14px;
+  font-weight:600;cursor:pointer;box-shadow:0 6px 20px -6px rgba(0,0,0,.5)}
+.print:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+@media (max-width:900px){
+  body{padding:12px 8px}
+  .page{width:100%;min-height:0;padding:20px 18px;zoom:.92}
+}
+@media print{
+  body{background:#fff;padding:0}
+  .page{width:100%;min-height:0;box-shadow:none;padding:.4in .45in}
+  .print{display:none}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="bar">
+    <h1>Bite by Bite</h1>
+    <div class="tag">Our feeding plan &middot; 29 months<br>No pressure. No bribes. No backup meal.</div>
+  </div>
+
+  <div class="dor">
+    <div class="a"><span>We decide</span><strong>What is served, when, and where.</strong></div>
+    <div class="b"><span>She decides</span><strong>Whether she eats, and how much.</strong></div>
+  </div>
+
+  <div class="blk">
+    <h2>The six rules</h2>
+    <ul class="six">
+      <li><span class="n">1</span><div><b>3 meals + 2 snacks</b>, every 2.5&ndash;3 hrs. Water only between.</div></li>
+      <li><span class="n">2</span><div><b>No grazing.</b> Milk with meals, ~16 oz a day max.</div></li>
+      <li><span class="n">3</span><div><b>Family style.</b> Bowls on the table; she serves herself.</div></li>
+      <li><span class="n">4</span><div><b>One safe food on every plate</b> &mdash; part of the meal, not a rescue.</div></li>
+      <li><span class="n">5</span><div><b>No short-order cooking.</b> One meal for everyone.</div></li>
+      <li><span class="n">6</span><div><b>Say nothing about her eating.</b> Good or bad.</div></li>
+    </ul>
+  </div>
+
+  <div class="blk cols">
+    <div class="col d">
+      <h3>Do</h3>
+      <ul>
+        <li><b>Describe</b> &mdash; &ldquo;crunchy and sweet&rdquo; &mdash; don&rsquo;t sell it.</li>
+        <li><b>Eat it yourself,</b> visibly, with enjoyment.</li>
+        <li><b>Accept &ldquo;no&rdquo; the first time.</b></li>
+        <li><b>Let her spit it out.</b> Escape routes make trying safe.</li>
+        <li><b>Serve a one-bite portion</b> next to a favorite.</li>
+        <li><b>End at ~20 minutes,</b> calmly.</li>
+      </ul>
+    </div>
+    <div class="col x">
+      <h3>Don&rsquo;t</h3>
+      <ul>
+        <li><b>No dessert as payment.</b></li>
+        <li><b>No praise for eating.</b> It makes food a performance.</li>
+        <li><b>No negotiating bites.</b></li>
+        <li><b>No backup meal.</b></li>
+        <li><b>No hiding veg</b> as the main plan.</li>
+        <li><b>Don&rsquo;t let one rough meal change anything.</b></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="blk">
+    <h2>Bridges from what she already loves</h2>
+    <div class="chains">
+      <p class="ch"><b>Cottage cheese</b> <em>&rarr;</em> ricotta <em>&rarr;</em> soft egg curds <em>&rarr;</em> scrambled egg <em>&rarr;</em> egg salad</p>
+      <p class="ch"><b>Pizza</b> <em>&rarr;</em> minced pepperoni <em>&rarr;</em> meatball <em>&rarr;</em> chicken meatball <em>&rarr;</em> cut chicken</p>
+      <p class="ch"><b>Pizza sauce</b> <em>&rarr;</em> marinara dip <em>&rarr;</em> tomato soup <em>&rarr;</em> roasted tomato <em>&rarr;</em> raw</p>
+      <p class="ch"><b>Peanut butter</b> <em>&rarr;</em> on crackers <em>&rarr;</em> on apple <em>&rarr;</em> as a dip <em>&rarr;</em> hummus</p>
+      <p class="ch"><b>Veg:</b> roasted sweet potato <em>&rarr;</em> carrot <em>&rarr;</em> broccoli <em>&rarr;</em> peas <em>&rarr;</em> raw</p>
+      <p class="ch"><b>Fruit:</b> applesauce <em>&rarr;</em> cooked apple <em>&rarr;</em> raw; freeze-dried berry <em>&rarr;</em> fresh</p>
+    </div>
+  </div>
+
+  <div class="blk">
+    <h2>Progress &mdash; every step counts</h2>
+    <div class="ladder">
+      <i>on the table</i><u>&rarr;</u><i>on her plate</i><u>&rarr;</u><i>touches it</i><u>&rarr;</u><i>smells it</i><u>&rarr;</u><i>licks it</i><u>&rarr;</u><i>spits it out</i><u>&rarr;</u><i>one bite</i><u>&rarr;</u><i>eats it</i>
+    </div>
+  </div>
+
+  <div class="strip">
+    <h3>Call the pediatrician if</h3>
+    <p>Fewer than <b>~20 accepted foods</b> or the list is shrinking &middot; a whole food group or texture refused &middot; <b>gagging, choking, or vomiting</b> at meals &middot; pocketing food &middot; weight loss or falling off her growth curve &middot; panic at the sight of food &middot; signs of reflux, constipation, or pain. <b>Ask for a pediatric feeding therapist (SLP or OT).</b> Early help is short help.</p>
+  </div>
+
+  <div class="mantra">
+    <p>It takes <b>10&ndash;15 tries.</b> Count how often we serve it &mdash; not how much she eats.</p>
+    <small>Ellyn Satter&rsquo;s Division of Responsibility &middot; food chaining<br>General guidance, not medical advice</small>
+  </div>
+
+</div>
+<button class="print" onclick="window.print()">Print this page</button>
+</body>
+</html>
