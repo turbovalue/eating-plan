@@ -236,7 +236,7 @@ details[open] .chain i:nth-child(13){animation-delay:.26s}
 
 /* ---------- exposure tracker ---------- */
 .trk{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:10px}
-.food{position:relative;background:var(--tint-sun);border:1px solid transparent;
+.food{position:relative;overflow:hidden;background:var(--tint-sun);border:1px solid transparent;
   border-radius:14px;padding:12px 13px 11px;cursor:pointer;text-align:left;
   font-family:inherit;color:var(--ink);transition:transform .12s,border-color .16s,background .2s;
   -webkit-user-select:none;user-select:none}
@@ -252,9 +252,17 @@ details[open] .chain i:nth-child(13){animation-delay:.26s}
 :root:not([data-theme="light"]) .meter{background:rgba(255,255,255,.12)}
 .meter > span{display:block;height:5px;border-radius:99px;background:var(--coral);
   transition:width .45s cubic-bezier(.2,.8,.3,1)}
-.food.done{background:var(--tint-leaf)}
+.food.done{background:var(--tint-leaf);border-color:var(--leaf)}
+.food.done .meter{background:rgba(31,138,109,.18)}
 .food.done .meter > span{background:var(--leaf)}
-.food.done .ct{color:var(--leaf-deep)}
+.food.done .ct{color:var(--leaf-deep);font-weight:700}
+/* corner ribbon -- bottom right, clear of the minus button */
+.food.done::after{content:"15 SERVED";position:absolute;bottom:16px;right:-32px;
+  width:118px;padding:3px 0;background:var(--leaf);color:#fff;text-align:center;
+  font-size:9px;font-weight:700;letter-spacing:.11em;
+  transform:rotate(-45deg);pointer-events:none}
+@keyframes complete-pop{0%{transform:scale(1)}40%{transform:scale(1.06)}100%{transform:scale(1)}}
+.food.justdone{animation:complete-pop .5s cubic-bezier(.34,1.56,.64,1) 1}
 .food .minus{position:absolute;top:6px;right:6px;width:26px;height:26px;border-radius:8px;
   border:0;color:var(--muted);font-size:16px;line-height:1;cursor:pointer;
   background:rgba(0,0,0,.05);opacity:1;transition:opacity .16s}
@@ -277,14 +285,14 @@ details[open] .chain i:nth-child(13){animation-delay:.26s}
 .trkfoot .tot{font-size:13.5px;color:var(--muted)}
 .trkfoot .tot b{color:var(--ink)}
 .reset{margin-left:auto;background:none;border:0;color:var(--muted);font-family:inherit;
-  font-size:13px;text-decoration:underline;cursor:pointer;padding:6px}
+  font-size:13px;text-decoration:underline;cursor:pointer;padding:12px 4px;min-height:44px}
 
 /* --- mobile overrides last, so they actually win the cascade --- */
 @media (max-width:430px){
   .trk{grid-template-columns:1fr 1fr;gap:9px}
   .food{padding:13px 12px 12px;min-height:112px}
   .food .em{font-size:22px}
-  .food .minus{width:34px;height:34px;top:4px;right:4px;font-size:18px}
+  .food .minus{width:40px;height:40px;top:3px;right:3px;font-size:19px}
   .addrow input{font-size:16px}          /* 16px stops iOS zooming the page on focus */
   .addrow button{padding:0 20px}
 }
@@ -590,19 +598,27 @@ details[open] .chain i:nth-child(13){animation-delay:.26s}
       b.className='food'+(f.n>=GOAL?' done':'')+(hit===i?' hit':'');
       b.setAttribute('role','button');
       b.setAttribute('tabindex','0');
-      b.setAttribute('aria-label',f.nm+', served '+f.n+' of '+GOAL+' times. Activate to add one.');
+      b.setAttribute('aria-label', f.n>=GOAL ? f.nm+', complete, served '+GOAL+' times.'
+        : f.nm+', served '+f.n+' of '+GOAL+' times. Activate to add one.');
       b.innerHTML='<span class="em">'+f.em+'</span><span class="nm"></span>'+
-        '<span class="ct">'+f.n+' / '+GOAL+(f.n>=GOAL?'  \u2713':'')+'</span>'+
+        '<span class="ct">'+(f.n>=GOAL?'Complete':f.n+' / '+GOAL)+'</span>'+
         '<span class="meter"><span style="width:'+Math.min(100,f.n/GOAL*100)+'%"></span></span>'+
         '<button class="minus" type="button">\u2212</button>';
       b.querySelector('.nm').textContent=f.nm;      // user text, never as HTML
       b.querySelector('.minus').setAttribute('aria-label','Subtract one from '+f.nm);
       function step(e){
+        var was=f.n;
         if(e.target.closest('.minus')){ e.stopPropagation(); f.n=Math.max(0,f.n-1); }
-        else { f.n++; }
+        else { f.n=Math.min(GOAL,f.n+1); }
         save(); render(i);
         var nb=trk.children[i];
-        if(nb){ nb.classList.add('spun'); setTimeout(function(){nb.classList.remove('spun');},700); }
+        if(nb){
+          nb.classList.add('spun'); setTimeout(function(){nb.classList.remove('spun');},700);
+          if(was<GOAL && f.n>=GOAL){
+            nb.classList.add('justdone');
+            setTimeout(function(){nb.classList.remove('justdone');},600);
+          }
+        }
       }
       b.addEventListener('click',step);
       b.addEventListener('keydown',function(e){
