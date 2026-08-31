@@ -291,19 +291,14 @@ details[open] .chain i:nth-child(13){animation-delay:.26s}
 /* ---------- frameworks ---------- */
 .fw{display:grid;gap:10px}
 .fwc{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:var(--card)}
-.fwc.use{background:var(--tint-leaf);border-color:transparent}
-.fwc.skip{opacity:.82}
-.fwh{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:5px}
-.fwh h3{margin:0;font-size:15.5px;font-weight:700;color:var(--ink);line-height:1.25}
-.tag{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
-  padding:3px 8px;border-radius:6px;white-space:nowrap}
-.tag.core{background:var(--leaf);color:#fff}
-.tag.aid{background:var(--sun);color:#4a3708}
-.tag.no{background:var(--line);color:var(--muted)}
-.tag.later{background:var(--tint-coral);color:var(--coral-deep)}
+.fwc h3{margin:0 0 5px;font-size:15.5px;font-weight:700;color:var(--ink);line-height:1.3}
 .fwc p{margin:0;font-size:14.3px;line-height:1.5}
 .fwc .ev{display:block;margin-top:7px;font-size:12.5px;color:var(--muted)}
 .fwc .ev b{color:var(--ink-2)}
+.fwsub{margin:20px 0 10px;font-size:13px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);
+  display:flex;align-items:center;gap:10px}
+.fwsub::after{content:"";flex:1;height:1px;background:var(--line)}
 .clash{background:var(--tint-coral);border-radius:14px;padding:14px 16px;margin-top:12px}
 .clash h3{margin:0 0 8px;font-size:13px;font-weight:700;letter-spacing:.09em;
   text-transform:uppercase;color:var(--coral-deep)}
@@ -555,46 +550,50 @@ details[open] .chain i:nth-child(13){animation-delay:.26s}
   <p class="why">Skip this unless you want the reasoning. There are five or six competing frameworks for picky eating, and they <b>genuinely disagree</b> with each other. Here's the landscape and where we landed.</p>
 
   <div class="fw">
-    <div class="fwc use">
-      <div class="fwh"><h3>Satter&rsquo;s Division of Responsibility</h3><span class="tag core">Our base</span></div>
-      <p>Parents own the what/when/where; the child owns whether and how much. The container everything else sits inside.</p>
-      <span class="ev"><b>Evidence:</b> the most studied feeding model; the pressure research consistently backs it. <b>Criticism:</b> some clinicians find it rigid, and note the tension in setting a schedule while claiming to follow the child&rsquo;s hunger cues.</span>
-    </div>
-
-    <div class="fwc use">
-      <div class="fwh"><h3>Repeated neutral exposure</h3><span class="tag core">Our engine</span></div>
-      <p>Serve it, say nothing, serve it again. Ten to fifteen times.</p>
-      <span class="ev"><b>Evidence:</b> the strongest of any technique here, replicated in randomized trials. <b>Cost:</b> slow and boring; most families quit before it works.</span>
-    </div>
-
-    <div class="fwc use">
-      <div class="fwh"><h3>Food chaining</h3><span class="tag aid">Our shortlist</span></div>
-      <p>Bridge outward from accepted foods by changing one variable at a time. We use it to choose <em>what</em> to expose, not to pressure.</p>
-      <span class="ev"><b>Evidence:</b> widely used and clinically sensible, but the peer-reviewed base is thinner than the &ldquo;evidence-based&rdquo; marketing implies. It&rsquo;s a targeting technique, not a whole framework.</span>
+    <div class="fwc">
+      <h3>Satter&rsquo;s Division of Responsibility</h3>
+      <p>Parents own the what, when, and where; the child owns whether and how much. The container everything else sits inside.</p>
+      <span class="ev"><b>Evidence:</b> the most studied feeding model, and the research on pressure consistently supports it. <b>Criticism:</b> some clinicians find it rigid, and note the tension in setting a fixed schedule while claiming to follow a child&rsquo;s hunger cues.</span>
     </div>
 
     <div class="fwc">
-      <div class="fwh"><h3>Responsive Feeding Therapy</h3><span class="tag aid">Same family</span></div>
-      <p>The broader umbrella that DoR sits under &mdash; individualized rather than one protocol, built on the child&rsquo;s sense of safety. Explicitly rejects rewards, pressure, and ABA-style methods.</p>
-      <span class="ev"><b>Use it if:</b> DoR&rsquo;s structure doesn&rsquo;t fit our kid. This is the training to look for in a therapist.</span>
+      <h3>Repeated neutral exposure</h3>
+      <p>Serve it, say nothing, serve it again. Ten to fifteen times.</p>
+      <span class="ev"><b>Evidence:</b> the strongest of any technique here, replicated in randomized trials. <b>Cost:</b> slow and boring, and most families quit before it works.</span>
     </div>
 
-    <div class="fwc skip">
-      <div class="fwh"><h3>Reward-based tasting (&ldquo;Tiny Tastes&rdquo;)</h3><span class="tag later">If truly stuck</span></div>
-      <p>A sticker for tasting one target food, in short sessions away from meals.</p>
-      <span class="ev"><b>Evidence:</b> a randomized trial found stickers plus repeated tasting beat control on both intake and liking, holding at three months &mdash; while <em>praise</em> did not. <b>Conflict:</b> this directly contradicts DoR, which forbids rewarding eating.</span>
+    <div class="fwc">
+      <h3>Food chaining</h3>
+      <p>Bridge outward from accepted foods by changing one variable at a time. It decides <em>what</em> to serve, not how hard to push.</p>
+      <span class="ev"><b>Evidence:</b> widely used and clinically sensible, but the peer-reviewed base is thinner than the &ldquo;evidence-based&rdquo; marketing suggests. It&rsquo;s a targeting technique, not a whole framework.</span>
+    </div>
+  </div>
+
+  <p class="fwsub">Other approaches</p>
+
+  <div class="fw">
+    <div class="fwc">
+      <h3>Responsive Feeding Therapy</h3>
+      <p>The broader umbrella that Division of Responsibility sits under &mdash; individualized rather than a single protocol, built around the child&rsquo;s sense of safety. Explicitly rejects rewards, pressure, and ABA-style methods.</p>
+      <span class="ev"><b>Relevant if:</b> the structure above doesn&rsquo;t suit our kid. This is the training to look for in a therapist.</span>
     </div>
 
-    <div class="fwc skip">
-      <div class="fwh"><h3>SOS Approach (Toomey)</h3><span class="tag no">Not us</span></div>
-      <p>A therapist-led ladder of ~32 steps from tolerating a food in the room to swallowing it. Play-based systematic desensitization.</p>
-      <span class="ev"><b>Best for:</b> real sensory aversion or texture refusal. <b>Cost:</b> a clinician and a budget. Evidence is described as emerging and limited. Overkill for ordinary picky eating.</span>
+    <div class="fwc">
+      <h3>Reward-based tasting (&ldquo;Tiny Tastes&rdquo;)</h3>
+      <p>A sticker for tasting one target food, in short sessions held away from meals.</p>
+      <span class="ev"><b>Evidence:</b> a randomized trial found stickers plus repeated tasting beat control on both intake and liking, holding at three months &mdash; while <em>praise</em> did not. <b>Conflict:</b> this directly contradicts Division of Responsibility, which forbids rewarding eating.</span>
     </div>
 
-    <div class="fwc skip">
-      <div class="fwh"><h3>Behavioral / ABA feeding programs</h3><span class="tag no">Not us</span></div>
-      <p>Escape extinction and similar procedures &mdash; the spoon doesn&rsquo;t leave until the bite is taken.</p>
-      <span class="ev"><b>Best for:</b> tube weaning, failure to thrive, medical urgency, where it has the strongest effect sizes. <b>Otherwise:</b> the responsive camp considers it flooding, not desensitization, and inappropriate for a healthy kid.</span>
+    <div class="fwc">
+      <h3>SOS Approach (Toomey)</h3>
+      <p>A therapist-led ladder of about thirty steps, from tolerating a food in the room to swallowing it. Play-based systematic desensitization.</p>
+      <span class="ev"><b>Built for:</b> real sensory aversion or texture refusal. Needs a clinician and a budget, and the evidence is described as emerging and limited.</span>
+    </div>
+
+    <div class="fwc">
+      <h3>Behavioral and ABA feeding programs</h3>
+      <p>Escape extinction and related procedures &mdash; the spoon doesn&rsquo;t leave until the bite is taken.</p>
+      <span class="ev"><b>Built for:</b> tube weaning, failure to thrive, and medical urgency, where it has the strongest effect sizes of anything here. Outside that, the responsive camp considers it flooding rather than desensitization.</span>
     </div>
   </div>
 
