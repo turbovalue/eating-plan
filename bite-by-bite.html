@@ -287,6 +287,37 @@ details[open] .chain i:nth-child(13){animation-delay:.26s}
 .reset{margin-left:auto;background:none;border:0;color:var(--muted);font-family:inherit;
   font-size:13px;text-decoration:underline;cursor:pointer;padding:12px 4px;min-height:44px}
 
+
+/* ---------- frameworks ---------- */
+.fw{display:grid;gap:10px}
+.fwc{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:var(--card)}
+.fwc.use{background:var(--tint-leaf);border-color:transparent}
+.fwc.skip{opacity:.82}
+.fwh{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:5px}
+.fwh h3{margin:0;font-size:15.5px;font-weight:700;color:var(--ink);line-height:1.25}
+.tag{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  padding:3px 8px;border-radius:6px;white-space:nowrap}
+.tag.core{background:var(--leaf);color:#fff}
+.tag.aid{background:var(--sun);color:#4a3708}
+.tag.no{background:var(--line);color:var(--muted)}
+.tag.later{background:var(--tint-coral);color:var(--coral-deep)}
+.fwc p{margin:0;font-size:14.3px;line-height:1.5}
+.fwc .ev{display:block;margin-top:7px;font-size:12.5px;color:var(--muted)}
+.fwc .ev b{color:var(--ink-2)}
+.clash{background:var(--tint-coral);border-radius:14px;padding:14px 16px;margin-top:12px}
+.clash h3{margin:0 0 8px;font-size:13px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--coral-deep)}
+.clash dl{margin:0}
+.clash dt{font-size:14.5px;font-weight:700;color:var(--ink);margin-top:11px}
+.clash dt:first-child{margin-top:0}
+.clash dd{margin:2px 0 0;font-size:14px;line-height:1.5;color:var(--ink-2)}
+.verdict{background:var(--ink);color:var(--cream);border-radius:14px;padding:15px 17px;margin-top:12px}
+.verdict h3{margin:0 0 8px;font-size:12px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--sun)}
+.verdict p{margin:0 0 8px;font-size:14.6px;line-height:1.55;color:#EFE7DD}
+.verdict p:last-child{margin-bottom:0}
+.verdict b{color:#fff}
+
 /* --- mobile overrides last, so they actually win the cascade --- */
 @media (max-width:430px){
   .trk{grid-template-columns:1fr 1fr;gap:9px}
@@ -314,6 +345,7 @@ details[open] .chain i:nth-child(13){animation-delay:.26s}
     <div class="meta">
       <span class="pill">Ages 2&ndash;3</span>
       <span class="pill">4 min read</span>
+      <span class="pill">+ appendix</span>
       <span class="pill">No guilt, no bribes</span>
     </div>
   </div>
@@ -329,6 +361,7 @@ details[open] .chain i:nth-child(13){animation-delay:.26s}
     <a href="#chains">Food Chains</a>
     <a href="#flags">Red Flags</a>
     <a href="#progress">Progress</a>
+    <a href="#frameworks">Why This Plan</a>
   </div>
   <div class="prog" id="prog"></div>
 </nav>
@@ -516,10 +549,81 @@ details[open] .chain i:nth-child(13){animation-delay:.26s}
   <div class="rule"><b>Every step before swallowing is real progress.</b> Spitting it out is a win &mdash; they tried it.</div>
 </section>
 
+<section id="frameworks">
+  <span class="eyebrow">Appendix &middot; optional</span>
+  <h2>Why this plan, and not another one</h2>
+  <p class="why">Skip this unless you want the reasoning. There are five or six competing frameworks for picky eating, and they <b>genuinely disagree</b> with each other. Here's the landscape and where we landed.</p>
+
+  <div class="fw">
+    <div class="fwc use">
+      <div class="fwh"><h3>Satter&rsquo;s Division of Responsibility</h3><span class="tag core">Our base</span></div>
+      <p>Parents own the what/when/where; the child owns whether and how much. The container everything else sits inside.</p>
+      <span class="ev"><b>Evidence:</b> the most studied feeding model; the pressure research consistently backs it. <b>Criticism:</b> some clinicians find it rigid, and note the tension in setting a schedule while claiming to follow the child&rsquo;s hunger cues.</span>
+    </div>
+
+    <div class="fwc use">
+      <div class="fwh"><h3>Repeated neutral exposure</h3><span class="tag core">Our engine</span></div>
+      <p>Serve it, say nothing, serve it again. Ten to fifteen times.</p>
+      <span class="ev"><b>Evidence:</b> the strongest of any technique here, replicated in randomized trials. <b>Cost:</b> slow and boring; most families quit before it works.</span>
+    </div>
+
+    <div class="fwc use">
+      <div class="fwh"><h3>Food chaining</h3><span class="tag aid">Our shortlist</span></div>
+      <p>Bridge outward from accepted foods by changing one variable at a time. We use it to choose <em>what</em> to expose, not to pressure.</p>
+      <span class="ev"><b>Evidence:</b> widely used and clinically sensible, but the peer-reviewed base is thinner than the &ldquo;evidence-based&rdquo; marketing implies. It&rsquo;s a targeting technique, not a whole framework.</span>
+    </div>
+
+    <div class="fwc">
+      <div class="fwh"><h3>Responsive Feeding Therapy</h3><span class="tag aid">Same family</span></div>
+      <p>The broader umbrella that DoR sits under &mdash; individualized rather than one protocol, built on the child&rsquo;s sense of safety. Explicitly rejects rewards, pressure, and ABA-style methods.</p>
+      <span class="ev"><b>Use it if:</b> DoR&rsquo;s structure doesn&rsquo;t fit our kid. This is the training to look for in a therapist.</span>
+    </div>
+
+    <div class="fwc skip">
+      <div class="fwh"><h3>Reward-based tasting (&ldquo;Tiny Tastes&rdquo;)</h3><span class="tag later">If truly stuck</span></div>
+      <p>A sticker for tasting one target food, in short sessions away from meals.</p>
+      <span class="ev"><b>Evidence:</b> a randomized trial found stickers plus repeated tasting beat control on both intake and liking, holding at three months &mdash; while <em>praise</em> did not. <b>Conflict:</b> this directly contradicts DoR, which forbids rewarding eating.</span>
+    </div>
+
+    <div class="fwc skip">
+      <div class="fwh"><h3>SOS Approach (Toomey)</h3><span class="tag no">Not us</span></div>
+      <p>A therapist-led ladder of ~32 steps from tolerating a food in the room to swallowing it. Play-based systematic desensitization.</p>
+      <span class="ev"><b>Best for:</b> real sensory aversion or texture refusal. <b>Cost:</b> a clinician and a budget. Evidence is described as emerging and limited. Overkill for ordinary picky eating.</span>
+    </div>
+
+    <div class="fwc skip">
+      <div class="fwh"><h3>Behavioral / ABA feeding programs</h3><span class="tag no">Not us</span></div>
+      <p>Escape extinction and similar procedures &mdash; the spoon doesn&rsquo;t leave until the bite is taken.</p>
+      <span class="ev"><b>Best for:</b> tube weaning, failure to thrive, medical urgency, where it has the strongest effect sizes. <b>Otherwise:</b> the responsive camp considers it flooding, not desensitization, and inappropriate for a healthy kid.</span>
+    </div>
+  </div>
+
+  <div class="clash">
+    <h3>Where they actually conflict</h3>
+    <dl>
+      <dt>1. Rewards</dt>
+      <dd>The trial data says a sticker for tasting works. DoR says never reward eating &mdash; it makes food a performance and the gains don&rsquo;t generalize. <b>Both positions have real support.</b> This is the sharpest unresolved disagreement in the field.</dd>
+      <dt>2. How much to engineer</dt>
+      <dd>Chaining and SOS deliberately design the ladder. Purist DoR says just serve the family meal and stay out of it. We think that&rsquo;s a false choice: chaining decides <em>what&rsquo;s on the table</em>, which is squarely the parent&rsquo;s job.</dd>
+      <dt>3. Who sets the pace</dt>
+      <dd>SOS is therapist-guided and stepwise; DoR is entirely child-paced. The distinction that matters is whether the child can opt out. If they can&rsquo;t, it&rsquo;s flooding &mdash; not desensitization.</dd>
+    </dl>
+  </div>
+
+  <div class="verdict">
+    <h3>What we&rsquo;re doing</h3>
+    <p><b>Division of Responsibility as the container, repeated exposure as the engine, food chaining to pick the targets.</b> These three don&rsquo;t fight each other &mdash; chaining and exposure both operate on the &ldquo;what we serve&rdquo; side of the line, which DoR hands to us anyway.</p>
+    <p><b>No rewards, for now.</b> Not because the evidence is bad &mdash; it isn&rsquo;t &mdash; but because mixing it with DoR sends a mixed message, and we don&rsquo;t have a problem urgent enough to need the tradeoff.</p>
+    <p><b>The escape hatch:</b> if a food is genuinely stuck after three months of honest exposure, try tasting sessions with a sticker &mdash; deliberately away from family meals, so mealtimes stay pressure-free. And if any red flag appears, stop optimizing at home and get an RFT-trained SLP or OT.</p>
+  </div>
+</section>
+
 <footer>
   <span class="fmark">Bite by Bite</span>
   Framework: Ellyn Satter&rsquo;s Division of Responsibility in Feeding.<br>
   Techniques: food chaining (Fraker et al.), repeated neutral exposure, family-style serving.<br>
+  Compared against Responsive Feeding Therapy, the SOS Approach (Toomey),
+  reward-based tasting (Cooke et al.), and behavioral feeding programs.<br>
   General guidance for a healthy toddler with no known allergies &mdash; not medical advice.
 </footer>
 </main>
