@@ -156,33 +156,29 @@ summary::-webkit-details-marker{display:none}
 .tw{flex:0 0 26px;height:26px;border-radius:50%;background:var(--tint-coral);
   color:var(--coral-deep);font-size:15px;display:flex;align-items:center;justify-content:center;
   will-change:transform}
-/* squash, launch, full 360, land -- loops while hovered / while open on touch */
-@keyframes pop360{
-   0%{transform:rotate(0deg)   scale(1)    translateY(0)}
-  12%{transform:rotate(0deg)   scale(.82,1.18) translateY(1px)}   /* crouch */
-  30%{transform:rotate(150deg) scale(1.3)  translateY(-7px)}      /* launch */
-  55%{transform:rotate(250deg) scale(1.3)  translateY(-8px)}      /* hang    */
-  80%{transform:rotate(360deg) scale(1.12) translateY(0)}         /* land    */
-  90%{transform:rotate(360deg) scale(1.18,.84) translateY(1px)}   /* squash  */
- 100%{transform:rotate(360deg) scale(1)    translateY(0)}
+/* matches the Lyon St. Chronicle spin: .65s, overshoot easing, 1.4x peak at 40% */
+@keyframes emoji-spin{
+   0%{transform:rotate(0deg)   scale(1)}
+  40%{transform:rotate(200deg) scale(1.4)}
+ 100%{transform:rotate(360deg) scale(1)}
 }
 /* every hover effect is quarantined: touch devices never get a stuck hover state */
 @media (hover:hover){
   .food .minus{opacity:0;background:transparent}
-  summary:hover .tw{animation:pop360 .85s cubic-bezier(.34,1.3,.64,1) infinite;
+  summary:hover .tw{animation:emoji-spin .65s cubic-bezier(.34,1.56,.64,1) infinite;
     background:var(--coral);color:#fff}
   .chain i:hover{transform:translateY(-2px);border-color:var(--leaf);
     box-shadow:0 4px 10px -4px rgba(31,138,109,.5)}
   .food:hover{border-color:var(--coral)}
-  .food:hover .em{animation:pop360 .85s cubic-bezier(.34,1.3,.64,1) infinite}
+  .food:hover .em{animation:emoji-spin .65s cubic-bezier(.34,1.56,.64,1) infinite}
   .food:hover .minus{opacity:1}
   .food .minus:hover{background:rgba(0,0,0,.07);color:var(--ink)}
   .reset:hover{color:var(--coral-deep)}
 }
-summary:focus-visible .tw{animation:pop360 .85s cubic-bezier(.34,1.3,.64,1) infinite}
+summary:focus-visible .tw{animation:emoji-spin .65s cubic-bezier(.34,1.56,.64,1) infinite}
 /* touch has no hover -- opening a chain gives it two turns, then it settles */
 details[open] summary .tw{
-  animation:pop360 .85s cubic-bezier(.34,1.3,.64,1) 2}
+  animation:emoji-spin .65s cubic-bezier(.34,1.56,.64,1) 1}
 summary .car{margin-left:auto;color:var(--muted);font-size:13px;transition:transform .2s}
 details[open] summary .car{transform:rotate(90deg)}
 .body{padding:0 16px 16px}
@@ -247,8 +243,7 @@ details[open] .chain i:nth-child(13){animation-delay:.26s}
   -webkit-user-select:none;user-select:none}
 .food:active{transform:scale(.96)}
 .food:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
-.food .em{font-size:20px;line-height:1;display:block;margin-bottom:5px;
-  transition:transform .2s}
+.food .em{font-size:20px;line-height:1;display:inline-block;margin-bottom:5px}
 .food .nm{display:block;font-size:14.5px;font-weight:650;line-height:1.25}
 .food .ct{display:block;font-size:12.5px;font-weight:600;color:var(--muted);
   margin-top:2px;font-variant-numeric:tabular-nums}
@@ -266,7 +261,7 @@ details[open] .chain i:nth-child(13){animation-delay:.26s}
 .food:focus-within .minus{opacity:1}
 .food .minus:active{background:rgba(0,0,0,.07);color:var(--ink)}
 /* tap = the same 360 the mouse gets */
-.food.spun .em{animation:pop360 .85s cubic-bezier(.34,1.3,.64,1) 1}
+.food.spun .em{animation:emoji-spin .65s cubic-bezier(.34,1.56,.64,1) 1}
 .chain i:active{transform:translateY(-2px) scale(.97);border-color:var(--leaf)}
 @keyframes bump{0%{transform:scale(1)}45%{transform:scale(1.14)}100%{transform:scale(1)}}
 .food.hit .ct{display:inline-block;animation:bump .32s cubic-bezier(.34,1.4,.64,1)}
@@ -607,7 +602,7 @@ details[open] .chain i:nth-child(13){animation-delay:.26s}
         else { f.n++; }
         save(); render(i);
         var nb=trk.children[i];
-        if(nb){ nb.classList.add('spun'); setTimeout(function(){nb.classList.remove('spun');},900); }
+        if(nb){ nb.classList.add('spun'); setTimeout(function(){nb.classList.remove('spun');},700); }
       }
       b.addEventListener('click',step);
       b.addEventListener('keydown',function(e){
